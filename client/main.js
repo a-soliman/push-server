@@ -11,3 +11,19 @@ const setSubscribedStatus = state => {
     document.getElementById("unsubscribe").className = "hidden";
   }
 };
+
+// Register Service Worker
+navigator.serviceWorker
+  .register("./sw.js")
+  .then(registration => {
+    // Reference registraition globally
+    swReg = registration;
+
+    // check if a subscribtion exists, and if so , update the  UI
+    swReg.pushManager.getSubscription().then(setSubscribedStatus);
+  })
+  .catch(console.error);
+
+fetch("http://localhost:3333")
+  .then(res => res.text())
+  .then(console.log);
