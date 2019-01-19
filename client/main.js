@@ -24,6 +24,6 @@ navigator.serviceWorker
   })
   .catch(console.error);
 
-fetch("http://localhost:3333")
+fetch("http://localhost:3333/subscribe", { method: "POST" })
   .then(res => res.text())
   .then(console.log);
