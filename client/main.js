@@ -20,14 +20,18 @@ const subscribe = () => {
           body: JSON.stringify(subscription)
         })
           .then(setSubscribedStatus)
-          .catch(console.error);
+          .catch(unsubscribe);
       })
       .catch(console.error);
   });
 };
 
 const unsubscribe = () => {
-  console.log("clicked");
+  swReg.pushManager.getSubscription().then(subscription => {
+    subscription.unsubscribe().then(() => {
+      setSubscribedStatus(false);
+    });
+  });
 };
 
 // Get Public key from the server

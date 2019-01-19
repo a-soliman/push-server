@@ -10,4 +10,5 @@ module.exports.getKey = () => urlsafeBase64.decode(vapid.publicKey);
 module.exports.addSubscription = subscription => {
   // Add to subscriptions array;
   subscriptions.push(subscription);
+  console.log(subscriptions);
 };
